@@ -1,0 +1,70 @@
+[
+  {
+    "id": "bermuda-01",
+    "titulo": "Short Bronx",
+    "imagen": "https://taverniti.vtexassets.com/arquivos/ids/244088-800-960?v=637946355315630000&width=800&height=960&aspect=true",
+    "categoria": "Bermudas",
+    "precio": 53000
+  },
+
+  {
+    "id": "bermuda-02",
+    "titulo": "Short Elephant",
+    "imagen": "https://http2.mlstatic.com/D_NQ_NP_726594-MLA52663828723_112022-O.webp",
+    "categoria": "Bermudas",
+    "precio": 56000
+  },
+
+  {
+    "id": "bermuda-03",
+    "titulo": "Short Notorious",
+    "imagen": "https://http2.mlstatic.com/D_NQ_NP_710547-MLA71808690709_092023-O.webp",
+    "categoria": "Bermudas",
+    "precio": 50000
+  },
+
+  {
+    "id": "torso-01",
+    "titulo": "Remera Área 51",
+    "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9lJvK3Arpe2XC9DCxXO9R-WbXNJzycKBD3A&s",
+    "categoria": "Torso",
+    "precio": 22000
+  },
+  {
+    "id": "torso-02",
+    "titulo": "Musculosa Thai",
+    "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4dPgz1GjF95nqRiKt9xtyG50_VtAhxveHtJLc4nHacw&s",
+    "categoria": "Torso",
+    "precio": 18000
+  },
+
+  {
+    "id": "torso-03",
+    "titulo": "Remera Kick",
+    "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUMSd2cPjXYj6NStfcPOP6PRZXAmObTOdLHsz8mHGTfw&s",
+    "categoria": "Torso",
+    "precio": 20000
+  },
+
+  {
+    "id": "accesorios-01",
+    "titulo": "Guantes Proyec",
+    "imagen": "https://acdn.mitiendanube.com/stores/002/487/034/products/guantes-proyec-forza1-8eb77273b8c795d60116676593107965-480-0.webp",
+    "categoria": "Accesorios",
+    "precio": 58000
+  },
+  {
+    "id": "accesorios-02",
+    "titulo": "Guantes Everlast",
+    "imagen": "https://www.dexter.com.ar/on/demandware.static/-/Sites-365-dabra-catalog/default/dw9191c417/products/EV5200060U/EV5200060U-1.JPG",
+    "categoria": "Accesorios",
+    "precio": 68000
+  },
+  {
+    "id": "accesorios-03",
+    "titulo": "Tibiales Pro Dragons",
+    "imagen": "https://http2.mlstatic.com/D_NQ_NP_606747-MLA49600347391_042022-O.webp",
+    "categoria": "Accesorios",
+    "precio": 54000
+  }
+]
