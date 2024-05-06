@@ -2,8 +2,13 @@ import { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import { ItemList } from "./ItemList";
 import { useParams } from "react-router-dom";
-
-import data from "../data/products.json";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  where,
+  query,
+} from "firebase/firestore";
 
 export const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
@@ -11,15 +16,18 @@ export const ItemListContainer = () => {
   const { categoryId } = useParams();
 
   useEffect(() => {
-    const get = new Promise((resolve, reject) => {
-      setTimeout(() => resolve(data), 2000);
-    });
+    const db = getFirestore();
+    const productsCollection = collection(db, "products");
 
-    get.then((data) => {
+    getDocs(productsCollection).then((querySnapshot) => {
+      const productsData = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
       if (!categoryId) {
-        setProducts(data);
+        setProducts(productsData);
       } else {
-        const filtered = data.filter(
+        const filtered = productsData.filter(
           (product) => product.categoria === categoryId
         );
         setProducts(filtered);
@@ -27,11 +35,10 @@ export const ItemListContainer = () => {
     });
   }, [categoryId]);
 
+  if (!products.length) return <div>Cargando...</div>;
+
   return (
-    <Container
-      className="mt-5 d-flex"
-      style={{ flexWrap: "wrap", justifyContent: "space-between" }}
-    >
+    <Container className="mt-5">
       <ItemList products={products} />
     </Container>
   );
