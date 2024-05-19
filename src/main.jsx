@@ -1,5 +1,5 @@
 import React from "react";
-import { createRoot } from "react-dom/client"; // Importa createRoot desde react-dom/client
+import { createRoot } from "react-dom/client";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -15,13 +15,14 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
+const db = getFirestore(app);
+
+export { db };
 
 const root = createRoot(document.getElementById("root"));
 
-ReactDOM.render(
+root.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>
 );
