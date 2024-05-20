@@ -1,6 +1,5 @@
 import Container from "react-bootstrap/Container";
 import { useContext } from "react";
-
 import { ItemCount } from "./ItemCount";
 import { CartContext } from "../context/CartContext";
 
@@ -20,8 +19,8 @@ export const ItemDetail = ({ product }) => {
         alt={product.titulo}
       />
       <p>{product.descripcion}</p>
-      <div>{`Stock ${product.stock}`}</div>
-      <div>{`Precio ${product.precio}`}</div>
+      <div>{`Stock: ${product.stock}`}</div>
+      <div>{`Precio: $${product.precio}`}</div>
       <ItemCount stock={product.stock} onAdd={add} />
     </Container>
   );

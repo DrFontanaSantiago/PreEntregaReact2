@@ -17,8 +17,8 @@
 
   {
     "id": "bermuda-03",
-    "titulo": "Short Notorious",
-    "imagen": "https://http2.mlstatic.com/D_NQ_NP_710547-MLA71808690709_092023-O.webp",
+    "titulo": "Short MMA",
+    "imagen": "https://ideogram.ai/api/images/direct/9mq2y8NSSvqnA5buijVv_A.png",
     "categoria": "Bermudas",
     "precio": 50000
   },
@@ -26,7 +26,7 @@
   {
     "id": "torso-01",
     "titulo": "Remera Área 51",
-    "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9lJvK3Arpe2XC9DCxXO9R-WbXNJzycKBD3A&s",
+    "imagen": "https://ideogram.ai/api/images/direct/iwk7lKlXS3C8kTcUJSwFjw.png",
     "categoria": "Torso",
     "precio": 22000
   },
@@ -40,8 +40,8 @@
 
   {
     "id": "torso-03",
-    "titulo": "Remera Kick",
-    "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUMSd2cPjXYj6NStfcPOP6PRZXAmObTOdLHsz8mHGTfw&s",
+    "titulo": "Top Bronx",
+    "imagen": "https://ideogram.ai/api/images/direct/tUk3vvenTFezZdchtHv6nw.png",
     "categoria": "Torso",
     "precio": 20000
   },
@@ -55,8 +55,8 @@
   },
   {
     "id": "accesorios-02",
-    "titulo": "Guantes Everlast",
-    "imagen": "https://www.dexter.com.ar/on/demandware.static/-/Sites-365-dabra-catalog/default/dw9191c417/products/EV5200060U/EV5200060U-1.JPG",
+    "titulo": "Guantes Alien",
+    "imagen": "https://ideogram.ai/api/images/direct/0hpauSOMRZyAZHjgoFF-Tg.png",
     "categoria": "Accesorios",
     "precio": 68000
   },

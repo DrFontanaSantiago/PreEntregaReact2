@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
-import { Container } from "react-bootstrap";
+import { Container, Button, Form, ListGroup, Row, Col } from "react-bootstrap";
 import { CartContext } from "../context/CartContext";
 
 const initialValues = {
@@ -18,12 +18,14 @@ export const Cart = () => {
   };
 
   const handleChange = (ev) => {
-    setValues((prev) => {
-      return { ...prev, [ev.target.name]: ev.target.value };
-    });
+    setValues((prev) => ({
+      ...prev,
+      [ev.target.name]: ev.target.value,
+    }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
     const order = {
       buyer: values,
       items: items,
@@ -36,7 +38,7 @@ export const Cart = () => {
     addDoc(orderCollection, order)
       .then(({ id }) => {
         if (id) {
-          alert("Se realizo correctamente la compra de: " + id);
+          alert("Se realizó correctamente la compra de: " + id);
         }
       })
       .finally(() => {
@@ -55,45 +57,81 @@ export const Cart = () => {
 
   return (
     <Container className="mt-5">
-      <h1>Productos</h1>
-      {items.map((i) => {
-        return (
-          <ul key={i.id}>
-            <li>Producto: {i.title}</li>
-            <li>Cantidad: {i.count}</li>
-            <li>$: {i.price}</li>
-            <li onClick={() => handleRemove(i.id)}>Eliminar</li>
-          </ul>
-        );
-      })}
+      <h1>Carrito de Compras</h1>
+      {items.map((item) => (
+        <ListGroup key={item.id}>
+          <ListGroup.Item>
+            <Row>
+              <Col>Producto:</Col>
+              <Col>{item.titulo}</Col>{" "}
+            </Row>
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <Row>
+              <Col>Cantidad:</Col>
+              <Col>{item.count}</Col>
+            </Row>
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <Row>
+              <Col>Precio unitario:</Col>
+              <Col>${item.price}</Col>
+            </Row>
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <Row>
+              <Col>Precio total:</Col>
+              <Col>${item.count * item.price}</Col>
+            </Row>
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <Button variant="danger" onClick={() => handleRemove(item.id)}>
+              Eliminar
+            </Button>
+          </ListGroup.Item>
+        </ListGroup>
+      ))}
 
-      <div>Total: ${total()}</div>
-      <button onClick={handleClear}>Vaciar</button>
+      <h2>Total: ${total()}</h2>
+      <Button variant="warning" onClick={handleClear}>
+        Vaciar
+      </Button>
       {items?.length > 0 && (
-        <form onSubmit={handleSubmit}>
-          <label>Nombre</label>
-          <input
-            type="text"
-            value={values.name}
-            name="name"
-            onChange={handleChange}
-          />
-          <label>Celular</label>
-          <input
-            type="text"
-            value={values.phone}
-            name="phone"
-            onChange={handleChange}
-          />
-          <label>Mail</label>
-          <input
-            type="text"
-            value={values.mail}
-            name="mail"
-            onChange={handleChange}
-          />
-          <button type="submit">Enviar</button>
-        </form>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="formName">
+            <Form.Label>Nombre</Form.Label>
+            <Form.Control
+              type="text"
+              value={values.name}
+              name="name"
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formPhone">
+            <Form.Label>Celular</Form.Label>
+            <Form.Control
+              type="text"
+              value={values.phone}
+              name="phone"
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formEmail">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type="email"
+              value={values.email}
+              name="email"
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Enviar
+          </Button>
+        </Form>
       )}
     </Container>
   );
