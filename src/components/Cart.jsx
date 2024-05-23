@@ -51,7 +51,7 @@ export const Cart = () => {
           <Button variant="danger" onClick={clear}>
             Vaciar Carrito
           </Button>
-          <Link to="/checkout">
+          <Link to="/Checkout">
             <Button variant="success">Finalizar Compra</Button>
           </Link>
         </>
