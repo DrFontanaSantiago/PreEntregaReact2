@@ -1,24 +1,30 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
-
 import { ItemDetail } from "./ItemDetail";
 
 export const ItemDetailContainer = () => {
   const [product, setProduct] = useState(null);
-
-  const { itemId } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     const db = getFirestore();
-    const docRef = doc(db, "products", itemId);
+    const itemRef = doc(db, "products", id);
 
-    getDoc(docRef).then((snapshot) => {
-      setProduct({ id: snapshot.id, ...snapshot.data() });
-    });
-  }, [itemId]);
+    getDoc(itemRef)
+      .then((doc) => {
+        if (doc.exists()) {
+          setProduct({ id: doc.id, ...doc.data() });
+        } else {
+          console.error("No such document!");
+        }
+      })
+      .catch((error) => {
+        console.error("Error getting document:", error);
+      });
+  }, [id]);
 
-  if (!product) return <div>Cargando...</div>;
-
-  return <ItemDetail product={product} />;
+  return (
+    <div>{product ? <ItemDetail product={product} /> : <p>Loading...</p>}</div>
+  );
 };

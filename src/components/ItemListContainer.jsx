@@ -1,42 +1,34 @@
-import { useEffect, useState } from "react";
-import { db } from "../main";
-import Container from "react-bootstrap/Container";
-import { ItemList } from "./ItemList";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
   getFirestore,
   collection,
   getDocs,
-  where,
   query,
+  where,
 } from "firebase/firestore";
+import { Container } from "react-bootstrap";
+import { ItemList } from "./ItemList";
 
 export const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
-
   const { categoryId } = useParams();
 
   useEffect(() => {
     const db = getFirestore();
     const productsCollection = collection(db, "products");
+    const q = categoryId
+      ? query(productsCollection, where("categoria", "==", categoryId))
+      : productsCollection;
 
-    getDocs(productsCollection).then((querySnapshot) => {
+    getDocs(q).then((querySnapshot) => {
       const productsData = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
-      if (!categoryId) {
-        setProducts(productsData);
-      } else {
-        const filtered = productsData.filter(
-          (product) => product.categoria === categoryId
-        );
-        setProducts(filtered);
-      }
+      setProducts(productsData);
     });
   }, [categoryId]);
-
-  if (!products.length) return <div>Cargando...</div>;
 
   return (
     <Container className="mt-5">

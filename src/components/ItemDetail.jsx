@@ -1,5 +1,5 @@
-import Container from "react-bootstrap/Container";
-import { useContext } from "react";
+import React, { useContext } from "react";
+import { Container } from "react-bootstrap";
 import { ItemCount } from "./ItemCount";
 import { CartContext } from "../context/CartContext";
 

@@ -14,7 +14,7 @@ export const CartProvider = ({ children }) => {
 
   const addItem = (item, count) => {
     const existingItemIndex = items.findIndex((i) => i.id === item.id);
-    const itemPrice = Number(item.price); // Asegurarse de que el precio sea un número
+    const itemPrice = Number(item.price);
 
     if (existingItemIndex >= 0) {
       const updatedItems = items.map((i, index) =>

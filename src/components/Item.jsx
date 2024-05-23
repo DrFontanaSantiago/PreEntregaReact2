@@ -1,7 +1,6 @@
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { Card, Button } from "react-bootstrap";
 import { CartContext } from "../context/CartContext";
 
 export const Item = ({ product }) => {
@@ -17,8 +16,7 @@ export const Item = ({ product }) => {
       <Card.Body
         style={{
           display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
+          flexDirection: "column",
           justifyContent: "space-between",
         }}
       >
